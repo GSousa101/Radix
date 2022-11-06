@@ -1,15 +1,24 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-//pos_y, pos_x = cordenadas do objeto
-typedef struct s_navio {
-    int pos_y;
-    int pos_x;
-}   t_navio;
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
-typedef struct s_unidade {
-    int pos_y;
-    int pos_x;
-}   t_navio;
+typedef struct s_item {
+	int				flag;
+	int				id;
+	struct s_item	*next;
+}	t_item;
+
+typedef struct s_global {
+	t_item	*insumo;
+	t_item	*quimico;
+	t_item	*ferramenta;
+}	t_global;
+
+void	add_item(t_global *global);
+t_item	*new_lst(int flag, int id);
+void	request(t_item **lst, t_item *new);
 
 #endif
